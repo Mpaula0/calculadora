@@ -1,0 +1,33 @@
+import math
+
+def calculadora():
+    print("Bem-vindo à calculadora avançada!")
+    print("Você pode realizar operações matemáticas como:")
+    print("Adição (+), Subtração (-), Multiplicação (*), Divisão (/),")
+    print("Potência (**), Módulo (%), Fatorial (!)")
+    
+    while True:
+        try:
+            # Receber a expressão matemática do usuário
+            expressao = input("\nDigite a expressão matemática (ou digite 'sair' para sair): ")
+            
+            # Verificar se o usuário deseja sair
+            if expressao.lower() == 'sair':
+                print("Saindo da calculadora. Até logo!")
+                break
+            
+            # Substituir '!' por 'math.factorial'
+            expressao = expressao.replace('!', '.factorial()')
+
+            # Avaliar a expressão usando a função eval()
+            resultado = eval(expressao, {'math': math})
+            
+            # Exibir o resultado da expressão
+            print(f"O resultado de {expressao} = {resultado}")
+            
+        except Exception as e:
+            # Tratar erros de entrada ou de expressão inválida
+            print(f"Erro: {e}. Por favor, tente novamente.")
+
+if __name__ == "__main__":
+    calculadora()
